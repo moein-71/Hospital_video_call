@@ -8,6 +8,21 @@ Window {
     title: qsTr("Hospital")
     color: "#222222"
 
+    Rectangle {// width : 1000 , height : 505
+        id : video_screen
+        width: window.width / 128 * 100
+        height : window.height / 72 * 50.5
+        anchors.top: parent.top
+        anchors.left: parent.left
+
+        Text {
+            id: what_click_now
+            anchors.centerIn: parent
+            text: backend.click
+            font.pixelSize: 100
+        }
+    }
+
     Rectangle {
         width: window.width / 128 * 28
         height: window.height
@@ -32,7 +47,14 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top : analog_clock.bottom
                 anchors.topMargin: 15
-                color : "red"
+                color : "#000033"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: currunt_time.time
+                    font.pixelSize: 40
+                    color: "white"
+                }
             }
             Rectangle {
                 id : show_date
@@ -41,7 +63,14 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top : digital_clock.bottom
                 anchors.topMargin: 15
-                color : "red"
+                color : "#000033"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: currunt_time.date
+                    font.pixelSize: 40
+                    color: "white"
+                }
             }
             Rectangle {
                 id : company
@@ -89,6 +118,13 @@ Window {
                             font.pixelSize: 40
                         }
 
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                backend.click = "Video Routing"
+                            }
+                        }
+
                     }
                     Rectangle {
                         id: timer
@@ -125,11 +161,18 @@ Window {
                                 font.pixelSize: 40
                             }
 
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    backend.click = "Video Conferenceg"
+                                }
+                            }
+
                         }
                         Row {
                             spacing: 10
                             anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.left: parent.left
+                            // anchors.left: parent.left
                             // anchors.bottom: parent.bottom
 
                             Rectangle {
@@ -145,6 +188,13 @@ Window {
                                     font.pixelSize: 40
                                     color: "white"
                                 }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        backend.click = "PACS"
+                                    }
+                                }
                             }
 
                             Rectangle {
@@ -159,6 +209,13 @@ Window {
                                     text: qsTr("HIS")
                                     font.pixelSize: 40
                                     color: "white"
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        backend.click = "HIS"
+                                    }
                                 }
                             }
                         }
@@ -190,6 +247,13 @@ Window {
                                 font.pixelSize: 40
                             }
 
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    backend.click = "Archiving"
+                                }
+                            }
+
                         }
                         Rectangle {
                             id: next
@@ -203,6 +267,13 @@ Window {
                                 text: qsTr("Next")
                                 font.pixelSize: 40
                                 color: "white"
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    backend.click = "Next"
+                                }
                             }
                         }
                     }
@@ -233,6 +304,13 @@ Window {
                                 font.pixelSize: 40
                             }
 
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    backend.click = "End Surgery"
+                                }
+                            }
+
                         }
 
                         Row {
@@ -253,6 +331,13 @@ Window {
                                     font.pixelSize: 40
                                     color: "white"
                                 }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        backend.click = "none <"
+                                    }
+                                }
                             }
 
                             Rectangle {
@@ -267,6 +352,13 @@ Window {
                                     text: qsTr(">")
                                     font.pixelSize: 40
                                     color: "white"
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        backend.click = "none >"
+                                    }
                                 }
                             }
                         }
