@@ -10,8 +10,6 @@ void Make_time::start() {
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Make_time::updatetime);
     timer->start(1000);
-    qDebug() << "Make_time started in thread:" << QThread::currentThread() ;
-
 }
 
 

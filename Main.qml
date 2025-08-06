@@ -34,11 +34,13 @@ Window {
             Rectangle {
                 id : analog_clock
                 width : window.width / 128 * 24
-                height : window.height / 72 * 19
+                height : window.height / 72 * 24 //
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top : parent.top
                 anchors.topMargin: 15
-                color : "red"
+                color : "#000033"
+
+                Clock {}
             }
             Rectangle {
                 id : digital_clock
@@ -46,12 +48,12 @@ Window {
                 height : window.height / 72 * 8
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top : analog_clock.bottom
-                anchors.topMargin: 15
+                anchors.topMargin: 10
                 color : "#000033"
 
                 Text {
                     anchors.centerIn: parent
-                    text: currunt_time.time
+                    text: currunt_time.time === "" ? "00:00:00" : currunt_time.time
                     font.pixelSize: 40
                     color: "white"
                 }
@@ -62,12 +64,12 @@ Window {
                 height : window.height / 72 * 8
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top : digital_clock.bottom
-                anchors.topMargin: 15
+                anchors.topMargin: 0
                 color : "#000033"
 
                 Text {
                     anchors.centerIn: parent
-                    text: currunt_time.date
+                    text: currunt_time.date === "" ? "0000-00-00" : currunt_time.date
                     font.pixelSize: 40
                     color: "white"
                 }
@@ -285,6 +287,7 @@ Window {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: third_rec.right
                     anchors.leftMargin: 15
+
                     color : "#000033"
 
                     Column {
@@ -315,8 +318,8 @@ Window {
 
                         Row {
                             spacing: 15
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.left: parent.left
+                            anchors.horizontalCenter: end_surgery.horizontalCenter
+                            // anchors.left: parent.left
 
                             Rectangle {
                                 id: none_1

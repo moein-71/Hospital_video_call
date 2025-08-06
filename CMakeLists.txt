@@ -14,16 +14,24 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appHospital_project
     main.cpp
+    qml.qrc
 )
 
 qt_add_qml_module(appHospital_project
     URI Hospital_project
     VERSION 1.0
     QML_FILES
-        Main.qml
-        SOURCES backend.h backend.cpp
-        SOURCES make_time.h make_time.cpp
-        SOURCES currunt_time.h currunt_time.cpp
+            Main.qml
+            Clock.qml
+            assets/clock-face.png
+            assets/hour.png
+            assets/minute.png
+            assets/second.png
+
+    SOURCES
+        backend.h backend.cpp
+        make_time.h make_time.cpp
+        currunt_time.h currunt_time.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

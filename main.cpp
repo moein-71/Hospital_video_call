@@ -5,6 +5,7 @@
 #include <QCoreApplication>
 #include <QQmlEngine>
 #include <QQmlExtensionPlugin>
+#include <QFile>
 
 #include "backend.h"
 #include "currunt_time.h"
