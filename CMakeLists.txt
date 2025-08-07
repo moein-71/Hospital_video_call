@@ -9,6 +9,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -32,6 +33,8 @@ qt_add_qml_module(appHospital_project
         backend.h backend.cpp
         make_time.h make_time.cpp
         currunt_time.h currunt_time.cpp
+        SOURCES
+        SOURCES file_opener.h file_opener.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -48,6 +51,7 @@ set_target_properties(appHospital_project PROPERTIES
 target_link_libraries(appHospital_project
     PRIVATE Qt6::Quick
 )
+target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 target_link_libraries(appHospital_project PRIVATE Qt6::Core)

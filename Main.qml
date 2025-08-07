@@ -194,7 +194,7 @@ Window {
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
-                                        backend.click = "PACS"
+                                        file_opener.open_folder("./recorded_videos")
                                     }
                                 }
                             }
@@ -216,7 +216,7 @@ Window {
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
-                                        backend.click = "HIS"
+                                        file_opener.open_folder("./recorded_videos")
                                     }
                                 }
                             }
