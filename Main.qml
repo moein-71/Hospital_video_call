@@ -1,4 +1,8 @@
 import QtQuick
+import QtQuick.Controls 2.15
+import QtQuick.Window 2.15
+import QtQuick.Layouts 1.15
+import VideoRecorder 1.0
 
 Window {
     id: window
@@ -20,6 +24,20 @@ Window {
             anchors.centerIn: parent
             text: backend.click
             font.pixelSize: 100
+        }
+
+        Image {
+                    id: cameraImage
+                    width: 1000
+                    height: 505
+                    fillMode: Image.PreserveAspectFit
+                }
+
+        Connections {
+            target: imageProvider
+            function onImageChanged() {
+                cameraImage.source = "image://camera/live?" + Math.random()
+            }
         }
     }
 
@@ -123,7 +141,7 @@ Window {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                backend.click = "Video Routing"
+                                Camerahandler.startRecording("./recorded_videos")
                             }
                         }
 
@@ -252,7 +270,7 @@ Window {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    backend.click = "Archiving"
+                                    Camerahandler.startArchiving("./recorded_videos")
                                 }
                             }
 
@@ -310,7 +328,7 @@ Window {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    backend.click = "End Surgery"
+                                    onClicked: Camerahandler.stopRecording()
                                 }
                             }
 

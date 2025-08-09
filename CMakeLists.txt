@@ -10,6 +10,8 @@ find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -35,6 +37,9 @@ qt_add_qml_module(appHospital_project
         currunt_time.h currunt_time.cpp
         SOURCES
         SOURCES file_opener.h file_opener.cpp
+        SOURCES image_provider.h image_provider.cpp
+        SOURCES camerahandler.h camerahandler.cpp
+        SOURCES camerarecorder.h camerarecorder.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -56,6 +61,8 @@ target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 target_link_libraries(appHospital_project PRIVATE Qt6::Core)
+target_link_libraries(appHospital_project PRIVATE Qt6::Core)
+target_link_libraries(appHospital_project PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
 install(TARGETS appHospital_project
@@ -63,3 +70,7 @@ install(TARGETS appHospital_project
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+find_package(OpenCV REQUIRED)
+target_include_directories(appHospital_project PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(appHospital_project PRIVATE ${OpenCV_LIBS})
