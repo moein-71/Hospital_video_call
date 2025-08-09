@@ -18,6 +18,7 @@ Window {
         height : window.height / 72 * 50.5
         anchors.top: parent.top
         anchors.left: parent.left
+        color: "#222222"
 
         Text {
             id: what_click_now
@@ -28,8 +29,8 @@ Window {
 
         Image {
                     id: cameraImage
-                    width: 1000
-                    height: 505
+                    width: window.width / 128 * 100
+                    height: window.height / 72 * 50.5
                     fillMode: Image.PreserveAspectFit
                 }
 
