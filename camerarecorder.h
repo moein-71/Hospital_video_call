@@ -19,10 +19,9 @@ class CameraRecorder : public QObject
 
         Q_INVOKABLE void startRecording(const QString& path) ;
         Q_INVOKABLE void stopRecording() ;
-
+        Q_INVOKABLE void startArchiving(const QString &path) ;
         void set_ImageProvider(Image_provider* provider) ;
         bool is_showing() ;
-        void startArchiving(const QString &path) ;
 
     signals:
         // void frameReady(const QImage &image);

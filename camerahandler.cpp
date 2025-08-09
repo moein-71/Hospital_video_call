@@ -49,7 +49,7 @@ void CameraHandler::stopRecording() {
 void CameraHandler::startArchiving(const QString& path) {
     if(recorder != nullptr) {
         if(recorder->is_showing()) {
-            recorder->startArchiving(path) ;
+            QMetaObject::invokeMethod(recorder, "startArchiving", Qt::DirectConnection , Q_ARG(QString, path));
         }
     }
     // else {
