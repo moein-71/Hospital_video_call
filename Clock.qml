@@ -7,23 +7,23 @@ Item {
     height: 240
     anchors.centerIn: parent
 
-    property int hours
-    property int minutes
-    property int seconds
+    property int hours : currunt_time.now_hour
+    property int minutes : currunt_time.now_minute
+    property int seconds : currunt_time.now_second
 
-    function timeChanged() {
-        var date = new Date();
-        hours = date.getHours();
-        minutes = date.getMinutes();
-        seconds = date.getSeconds();
-    }
+    // function timeChanged() {
+    //     var date = new Date();
+    //     hours = date.getHours();
+    //     minutes = date.getMinutes();
+    //     seconds = date.getSeconds();
+    // }
 
-    Timer {
-        interval: 100
-        repeat: true
-        running: true
-        onTriggered: timeChanged()
-    }
+    // Timer {
+    //     interval: 100
+    //     repeat: true
+    //     running: true
+    //     onTriggered: timeChanged()
+    // }
 
     Image {
         id: clockFace

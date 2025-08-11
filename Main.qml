@@ -12,6 +12,9 @@ Window {
     title: qsTr("Hospital")
     color: "#222222"
 
+    property bool is_archiving : false
+    property bool is_routing : false
+
     Rectangle {// width : 1000 , height : 505
         id : video_screen
         width: window.width / 128 * 100
@@ -142,6 +145,7 @@ Window {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
+                                is_routing = true
                                 Camerahandler.startRecording("./recorded_videos")
                             }
                         }
@@ -153,6 +157,11 @@ Window {
                         height: window.height / 72 * 8.5
                         anchors.horizontalCenter: parent.horizontalCenter
                         color : "darkgreen"
+                        Text {
+                            anchors.centerIn: parent
+                            text: currunt_time.time_from_start
+                            font.pixelSize: 50
+                        }
                     }
                 }
 
@@ -271,7 +280,11 @@ Window {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
+                                    if(is_routing == true) {is_archiving = true}
                                     Camerahandler.startArchiving("./recorded_videos")
+                                    if(is_archiving == true) {
+                                        currunt_time.set_video_start_time()
+                                    }
                                 }
                             }
 
@@ -329,7 +342,10 @@ Window {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
+                                    is_routing = false
+                                    is_archiving = false
                                     onClicked: Camerahandler.stopRecording()
+                                    currunt_time.end_of_video()
                                 }
                             }
 

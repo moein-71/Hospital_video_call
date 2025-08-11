@@ -12,10 +12,24 @@ void Make_time::start() {
     timer->start(1000);
 }
 
+int Make_time::get_now_second() {
+    return now_second ;
+}
+
+int Make_time::get_now_minute() {
+    return now_minute ;
+}
+
+int Make_time::get_now_hour() {
+    return now_hour ;
+}
 
 void Make_time::updatetime() {
-    QString newtime = QTime::currentTime().toString("HH:mm:ss");
+    now_second = QTime::currentTime().second() ;
+    now_minute = QTime::currentTime().minute() ;
+    now_hour = QTime::currentTime().hour() ;
     QString newdate = QDate::currentDate().toString("yyyy-MM-dd");
+    QString newtime = QTime::currentTime().toString("HH:mm:ss");
 
     if (newtime != now_time) {
         now_time = newtime;

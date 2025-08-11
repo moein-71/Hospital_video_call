@@ -13,6 +13,9 @@ class Make_time : public QObject
     public:
 
         explicit Make_time(QObject *parent = nullptr);
+        int get_now_second() ;
+        int get_now_minute() ;
+        int get_now_hour() ;
         void start() ;
 
     signals:
@@ -29,6 +32,9 @@ class Make_time : public QObject
         QTimer* timer = nullptr; ;
         QString now_time ;
         QString now_date ;
+        int now_second ;
+        int now_minute ;
+        int now_hour ;
 
 };
 
